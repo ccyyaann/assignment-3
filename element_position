@@ -1,0 +1,108 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main ()
+{
+  const int array_size = 10; // size of elements of the array as a constant
+  int numbers[array_size]; // declaring the array
+
+  int index;  // position in the array
+  int max;    // highest number in the array
+  int max_position = -1;   // the position of the highest number (-1 to start)
+
+  int sum;
+
+  // assigning elements in the array
+  numbers[0] = 3;
+  numbers[1] = 2;
+  numbers[2] = 7;
+  numbers[3] = 6;
+  numbers[4] = 4;
+  numbers[5] = 1;
+  numbers[6] = 5;
+  numbers[7] = 9;
+  numbers[8] = 8;
+  numbers[9] = 2;
+
+  // summing values in array
+  sum = 0;
+  for (index = 0; index < array_size; index++)
+    sum = sum + numbers[index];
+  cout << "The sum is " << sum << endl;
+
+  // find the maximum integer in the array
+  max = 0;
+  cout << "The initial array is: " <<
+           numbers[9] <<
+           numbers[8] <<
+           numbers[7] <<
+           numbers[6] <<
+           numbers[5] <<
+           numbers[4] <<
+           numbers[3] <<
+           numbers[2] <<
+           numbers[1] <<
+           numbers[0] << endl;
+  cout << "The max element and it's position are: " << max << " " << max_position << "," << endl;
+
+  for (index = array_size-1; index >= 0;index--) {
+
+    if (numbers[index] > max) {
+        max = numbers[index];
+        max_position = index;
+    }
+  }
+  cout << "The max is " << max << " at index " << max_position << "." << endl;
+
+  // do a logical shift left replacing the lowest index with a 0
+  // shifting the number in the highest position out
+  cout << "Before shifting, this is the array: " <<
+           numbers[9] <<
+           numbers[8] <<
+           numbers[7] <<
+           numbers[6] <<
+           numbers[5] <<
+           numbers[4] <<
+           numbers[3] <<
+           numbers[2] <<
+           numbers[1] <<
+           numbers[0] << endl;
+
+   int lower_index = 0; //keeping track of the next position
+
+   for (index = array_size-1; index >= 1;index--) {
+
+        lower_index = index-1; // prevent from going to zero
+        numbers[index] = numbers[lower_index];
+   }
+   numbers[0] = 0;
+   cout << "After shifting, this is the array: " <<
+           numbers[9] <<
+           numbers[8] <<
+           numbers[7] <<
+           numbers[6] <<
+           numbers[5] <<
+           numbers[4] <<
+           numbers[3] <<
+           numbers[2] <<
+           numbers[1] <<
+           numbers[0] << endl;
+
+
+    float average;
+
+    average = sum / array_size;
+
+    cout << "Average = " << average << endl;
+
+     for (int x=0; x<10; x++) {
+        cout << "Type array position inquiry:" ;
+    cin >> x;
+    cout << numbers[x] << endl;
+}
+
+  return 0;
+}
+
